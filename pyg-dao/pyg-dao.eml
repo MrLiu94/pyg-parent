@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component LANGUAGE_LEVEL="JDK_1_7" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+	<levels>
+		<level name="Maven: com.github.pagehelper:pagehelper:4.0.0" value="project"/>
+		<level name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" value="project"/>
+		<level name="Maven: org.mybatis:mybatis:3.2.8" value="project"/>
+		<level name="Maven: org.mybatis:mybatis-spring:1.2.2" value="project"/>
+		<level name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-api:1.7.2" value="project"/>
+		<level name="Maven: mysql:mysql-connector-java:5.1.32" value="project"/>
+		<level name="Maven: com.alibaba:druid:1.0.9" value="project"/>
+	</levels>
+</component>

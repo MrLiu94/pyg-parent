@@ -17,7 +17,7 @@
 	  var app=angular.module('pyg',[]);
 	  app.controller('brandController',function ($scope,$http) {
 		  $scope.findAll=function () {
-			  $http.get('../brand/findAll.do').success(
+			  $http.get('../brand/findAll').success(
 			      function (response) {
 					  $scope.list=response;
                   }

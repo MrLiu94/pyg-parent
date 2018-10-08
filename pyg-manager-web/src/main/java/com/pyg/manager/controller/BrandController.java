@@ -1,5 +1,6 @@
 package com.pyg.manager.controller;
 
+import PageBean.PageResult;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.pyg.pojo.TbBrand;
 import com.pyg.sellergoods.service.BrandService;
@@ -20,6 +21,11 @@ public class BrandController {
     public List<TbBrand> findAll() {
 
         return brandService.findAll();
+    }
+
+    @RequestMapping("/findPage")
+    public PageResult findPage(int page,int size){
+        return brandService.findPage(page, size);
     }
 }
 

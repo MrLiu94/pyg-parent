@@ -70,6 +70,36 @@
                     }
                 )
             }
+            //选中集合
+            $scope.selectList=[];
+        //    选中id添加到集合方法
+            $scope.selectCheck=function ($event,id) {
+                if ($event.target.checked){
+                    $scope.selectList.push(id);//push向集合添加元素
+                }else {
+                   var index= $scope.selectList.indexOf(id);//查找值的位置
+                    $scope.selectList.splice(index,1);//参数1：移除的位置 参数2：移除的个数
+                }
+            }
+            //删除
+            $scope.dele=function(){
+
+
+                if(confirm('确定要删除吗？')){
+                    $http.get('../brand/delete?ids='+$scope.selectList).success(
+                        function(response){
+                            if(response.success){
+                                $scope.reloadList();//刷新
+                            }else{
+                                alert(response.message);
+                            }
+                        }
+                    );
+                }
+
+            }
+
+
 
         });
     </script>
@@ -93,7 +123,7 @@
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
                             data-target="#editModal"  ng-click="entity={}"><i class="fa fa-file-o" ></i> 新建
                     </button>
-                    <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+                    <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i
                             class="fa fa-refresh"></i> 刷新
                     </button>
@@ -122,7 +152,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="entity in list">
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" ng-click="selectCheck($event,entity.id)"></td>
                 <td>{{entity.id}}</td>
                 <td>{{entity.name}}</td>
                 <td>{{entity.firstChar}}</td>

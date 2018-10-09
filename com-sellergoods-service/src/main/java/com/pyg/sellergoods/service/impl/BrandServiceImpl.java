@@ -67,4 +67,12 @@ public class BrandServiceImpl implements BrandService {
             return true;
         }
     }
+    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
+    @Override
+    public void delete(long[] ids) {
+        for (long id : ids) {
+            brandMapper.deleteByPrimaryKey(id);
+        }
+    }
+
 }

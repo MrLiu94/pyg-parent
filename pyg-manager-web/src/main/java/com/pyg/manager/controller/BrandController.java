@@ -57,5 +57,16 @@ public class BrandController {
                 }
             }
     }
+//    数据删除
+    @RequestMapping("/delete")
+    public Results delete(long[] ids){
+        try {
+            brandService.delete(ids);
+            return new Results(true,"删除成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Results(false,"删除失败");
+        }
+    }
 }
 

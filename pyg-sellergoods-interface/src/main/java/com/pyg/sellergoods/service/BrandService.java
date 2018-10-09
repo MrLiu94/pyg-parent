@@ -16,4 +16,6 @@ public interface BrandService {
     TbBrand findOne(long id);
 
     boolean update(TbBrand brand);
+
+    void delete(long[] ids);
 }

@@ -56,8 +56,11 @@ public class BrandServiceImpl implements BrandService {
     //数据更新
     @Override
     public boolean update(TbBrand brand) {
-        TbBrand tbBrand = brandMapper.selectByPrimaryKey(brand.getId());
-        if (tbBrand != null) {
+        TbBrandExample example = new TbBrandExample();
+        TbBrandExample.Criteria criteria = example.createCriteria();
+        criteria.andNameEqualTo(brand.getName());
+        List<TbBrand> tbBrands = brandMapper.selectByExample(example);
+        if (tbBrands.size() > 0) {
             return false;
         } else {
             brandMapper.updateByPrimaryKey(brand);

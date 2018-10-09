@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://E:/资料/pinyougou/pyg-parent/out/test/pyg-manager-web"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+	<levels>
+		<level name="Maven: org.springframework:spring-web:4.2.4.RELEASE" value="project"/>
+		<level name="Maven: com.alibaba:dubbo:2.8.4" value="project"/>
+		<level name="Maven: com.alibaba:fastjson:1.2.28" value="project"/>
+		<level name="Maven: org.springframework:spring-webmvc:4.2.4.RELEASE" value="project"/>
+		<level name="Maven: mysql:mysql-connector-java:5.1.32" value="project"/>
+	</levels>
+</component>

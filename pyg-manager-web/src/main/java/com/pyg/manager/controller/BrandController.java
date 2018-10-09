@@ -1,9 +1,11 @@
 package com.pyg.manager.controller;
 
 import PageBean.PageResult;
+import ReturnResult.Results;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.pyg.pojo.TbBrand;
 import com.pyg.sellergoods.service.BrandService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +28,18 @@ public class BrandController {
     @RequestMapping("/findPage")
     public PageResult findPage(int page,int size){
         return brandService.findPage(page, size);
+    }
+
+//    添加数据
+    @RequestMapping("/add")
+    public Results add(@RequestBody TbBrand brand){
+        try {
+            brandService.add(brand);
+            return new Results(true,"增加成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Results(false,"增加失败");
+        }
     }
 }
 

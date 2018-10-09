@@ -6,6 +6,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.pyg.mapper.TbBrandMapper;
 import com.pyg.pojo.TbBrand;
+import com.pyg.pojo.TbBrandExample;
 import com.pyg.sellergoods.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -26,9 +27,20 @@ public class BrandServiceImpl implements BrandService {
         Page<TbBrand> tbBrands = (Page<TbBrand>) brandMapper.selectByExample(null);
         return new PageResult(tbBrands.getTotal(),tbBrands.getResult());
     }
+
     @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     @Override
-    public void add(TbBrand brand) {
-        brandMapper.insert(brand);
+    public boolean add(TbBrand brand) {
+        TbBrandExample example=new TbBrandExample();
+        TbBrandExample.Criteria criteria = example.createCriteria();
+        criteria.andNameEqualTo(brand.getName());
+        List<TbBrand> tbBrands = brandMapper.selectByExample(example);
+        if (tbBrands.size()>0){
+            return false;
+        }else {
+            brandMapper.insert(brand);
+            return true;
+        }
+
     }
 }

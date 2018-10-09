@@ -33,13 +33,13 @@ public class BrandController {
 //    添加数据
     @RequestMapping("/add")
     public Results add(@RequestBody TbBrand brand){
-        try {
-            brandService.add(brand);
-            return new Results(true,"增加成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Results(false,"增加失败");
-        }
+            boolean flag = brandService.add(brand);
+            if (flag){
+                return new Results(true, "增加成功");
+            }else {
+                return new Results(false,"增加失败 品牌已存在");
+            }
+
     }
 }
 

@@ -11,5 +11,5 @@ public interface BrandService {
 //    实现分页
     PageResult findPage(int page,int size);
 //   添加数据
-    void add(TbBrand brand);
+    boolean add(TbBrand brand);
 }

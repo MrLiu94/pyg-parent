@@ -11,11 +11,14 @@ import com.pyg.sellergoods.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
+
 @Service
 public class BrandServiceImpl implements BrandService {
     @Autowired
     private TbBrandMapper brandMapper;
+
     @Override
     public List<TbBrand> findAll() {
         return brandMapper.selectByExample(null);
@@ -23,24 +26,42 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public PageResult findPage(int page, int size) {
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         Page<TbBrand> tbBrands = (Page<TbBrand>) brandMapper.selectByExample(null);
-        return new PageResult(tbBrands.getTotal(),tbBrands.getResult());
+        return new PageResult(tbBrands.getTotal(), tbBrands.getResult());
     }
 
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     @Override
     public boolean add(TbBrand brand) {
-        TbBrandExample example=new TbBrandExample();
+        TbBrandExample example = new TbBrandExample();
         TbBrandExample.Criteria criteria = example.createCriteria();
         criteria.andNameEqualTo(brand.getName());
         List<TbBrand> tbBrands = brandMapper.selectByExample(example);
-        if (tbBrands.size()>0){
+        if (tbBrands.size() > 0) {
             return false;
-        }else {
+        } else {
             brandMapper.insert(brand);
             return true;
         }
 
+    }
+
+    //数据回显
+    @Override
+    public TbBrand findOne(long id) {
+        return brandMapper.selectByPrimaryKey(id);
+    }
+
+    //数据更新
+    @Override
+    public boolean update(TbBrand brand) {
+        TbBrand tbBrand = brandMapper.selectByPrimaryKey(brand.getId());
+        if (tbBrand != null) {
+            return false;
+        } else {
+            brandMapper.updateByPrimaryKey(brand);
+            return true;
+        }
     }
 }

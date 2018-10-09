@@ -12,4 +12,8 @@ public interface BrandService {
     PageResult findPage(int page,int size);
 //   添加数据
     boolean add(TbBrand brand);
+
+    TbBrand findOne(long id);
+
+    boolean update(TbBrand brand);
 }

@@ -30,16 +30,32 @@ public class BrandController {
         return brandService.findPage(page, size);
     }
 
-//    添加数据
-    @RequestMapping("/add")
-    public Results add(@RequestBody TbBrand brand){
-            boolean flag = brandService.add(brand);
-            if (flag){
-                return new Results(true, "增加成功");
-            }else {
-                return new Results(false,"增加失败 品牌已存在");
-            }
 
+
+    @RequestMapping("/findOne")
+    public TbBrand findOne(long id){
+        return brandService.findOne(id);
+    }
+
+
+//    数据的更新和增加
+    @RequestMapping("/save")
+    public Results add(@RequestBody TbBrand brand){
+            if (brand.getId()!=null){
+                boolean flag=brandService.update(brand);
+                if (flag){
+                    return new Results(true,"更新成功");
+                }else {
+                    return new Results(false,"数据有误,更新失败");
+                }
+            }else {
+                boolean flag = brandService.add(brand);
+                if (flag){
+                    return new Results(true,"增加成功");
+                }else {
+                    return new Results(false,"数据有误,增加失败");
+                }
+            }
     }
 }
 

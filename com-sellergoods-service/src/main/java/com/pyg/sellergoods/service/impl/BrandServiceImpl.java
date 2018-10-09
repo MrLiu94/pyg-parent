@@ -8,10 +8,8 @@ import com.pyg.mapper.TbBrandMapper;
 import com.pyg.pojo.TbBrand;
 import com.pyg.sellergoods.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 @Service
 public class BrandServiceImpl implements BrandService {

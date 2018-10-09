@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module classpath="eclipse" classpath-dir="$MODULE_DIR$" type="JAVA_MODULE" version="4">
+<module version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="ApplicationContext Dao" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-dao.xml</file>
-        </fileset>
-      </configuration>
+      <configuration />
     </facet>
   </component>
 </module>

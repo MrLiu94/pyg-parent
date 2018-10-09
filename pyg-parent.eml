@@ -5,4 +5,7 @@
 		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
+	<levels>
+		<level name="Maven: com.alibaba:dubbo:2.8.4" value="project"/>
+	</levels>
 </component>

@@ -4,5 +4,8 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="com-sellergoods-service/src/main/java"/>
+	<classpathentry kind="src" path="com-sellergoods-service/src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: com.alibaba:dubbo:2.8.4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

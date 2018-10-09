@@ -8,6 +8,9 @@ import com.pyg.mapper.TbBrandMapper;
 import com.pyg.pojo.TbBrand;
 import com.pyg.sellergoods.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -25,7 +28,7 @@ public class BrandServiceImpl implements BrandService {
         Page<TbBrand> tbBrands = (Page<TbBrand>) brandMapper.selectByExample(null);
         return new PageResult(tbBrands.getTotal(),tbBrands.getResult());
     }
-
+    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     @Override
     public void add(TbBrand brand) {
         brandMapper.insert(brand);

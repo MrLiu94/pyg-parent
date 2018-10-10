@@ -25,12 +25,6 @@ public class BrandController {
         return brandService.findAll();
     }
 
-    @RequestMapping("/findPage")
-    public PageResult findPage(int page,int size){
-        return brandService.findPage(page, size);
-    }
-
-
 
     @RequestMapping("/findOne")
     public TbBrand findOne(long id){
@@ -67,6 +61,11 @@ public class BrandController {
             e.printStackTrace();
             return new Results(false,"删除失败");
         }
+    }
+//    模糊查询搜索
+    @RequestMapping("/search")
+    public PageResult search(@RequestBody TbBrand brand,int page,int size){
+        return brandService.search(brand,page,size);
     }
 }
 

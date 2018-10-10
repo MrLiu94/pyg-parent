@@ -18,4 +18,6 @@ public interface BrandService {
     boolean update(TbBrand brand);
 
     void delete(long[] ids);
+
+    PageResult search(TbBrand brand, int page, int size);
 }

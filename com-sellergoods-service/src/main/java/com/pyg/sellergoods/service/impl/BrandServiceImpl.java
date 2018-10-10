@@ -75,4 +75,21 @@ public class BrandServiceImpl implements BrandService {
         }
     }
 
+    @Override
+    public PageResult search(TbBrand brand, int page, int size) {
+        PageHelper.startPage(page, size);
+        TbBrandExample example=new TbBrandExample();
+        if (brand!=null){
+            TbBrandExample.Criteria criteria = example.createCriteria();
+            if (brand.getName()!=null&&brand.getName().length()>0){
+                criteria.andNameLike("%"+brand.getName()+"%");
+            }
+            if (brand.getFirstChar()!=null&&brand.getFirstChar().length()>0){
+                criteria.andFirstCharLike("%"+brand.getFirstChar()+"%");
+            }
+        }
+        Page<TbBrand> tbBrands = (Page<TbBrand>) brandMapper.selectByExample(example);
+        return new PageResult(tbBrands.getTotal(), tbBrands.getResult());
+    }
+
 }

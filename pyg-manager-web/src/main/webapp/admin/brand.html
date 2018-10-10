@@ -19,9 +19,28 @@
     <!-- 分页组件结束 -->
     <script>
         var app = angular.module('pyg', ['pagination']);
-        app.controller('brandController', function ($scope, $http) {
+        //前端服务层
+        app.service('brandService',function($http) {
+            this.findAll=function () {
+                return $http.get('../brand/findAll');
+            }
+            this.save=function (entity) {
+                return $http.post('../brand/save',entity);
+            }
+            this.findOne=function (id) {
+                return $http.get('../brand/findOne?id='+id);
+            }
+            this.dele=function (ids) {
+                return  $http.get('../brand/delete?ids='+ids);
+            }
+            this.findPage=function (page,size,searchEntity) {
+                return $http.post('../brand/search?page='+page+'&size='+size,searchEntity);
+            }
+        });
+        //前端控制器
+        app.controller('brandController', function ($scope,brandService) {
             $scope.findAll = function () {
-                $http.get('../brand/findAll').success(
+               brandService.findAll().success(
                     function (response) {
                         $scope.list = response;
                     }
@@ -46,7 +65,7 @@
 
         //    新增数据
             $scope.save=function () {
-                $http.post('../brand/save',$scope.entity).success(
+                brandService.save($scope.entity).success(
                     function (response) {
                       if (response.success){
                           $scope.reloadList();//刷新
@@ -57,7 +76,7 @@
                 )
             };
             $scope.findOne=function (id) {
-                $http.get('../brand/findOne?id='+id).success(
+                brandService.findOne(id).success(
                     function (response) {
                         $scope.entity=response;
                     }
@@ -76,10 +95,8 @@
             }
             //删除
             $scope.dele=function(){
-
-
                 if(confirm('确定要删除吗？')){
-                    $http.get('../brand/delete?ids='+$scope.selectList).success(
+                    brandService.dele($scope.selectList).success(
                         function(response){
                             if(response.success){
                                 $scope.reloadList();//刷新
@@ -94,7 +111,7 @@
             //查询&搜索
             $scope.searchEntity={};
             $scope.findPage=function (page,size) {
-                $http.post('../brand/search?page='+page+'&size='+size,$scope.searchEntity).success(
+                brandService.findPage(page,size,$scope.searchEntity).success(
                     function (response) {
                         $scope.list=response.rows;
                         $scope.paginationConf.totalItems=response.page;

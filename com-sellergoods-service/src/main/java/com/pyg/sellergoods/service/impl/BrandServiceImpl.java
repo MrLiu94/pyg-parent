@@ -31,6 +31,8 @@ public class BrandServiceImpl implements BrandService {
         return new PageResult(tbBrands.getTotal(), tbBrands.getResult());
     }
 
+
+
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     @Override
     public boolean add(TbBrand brand) {

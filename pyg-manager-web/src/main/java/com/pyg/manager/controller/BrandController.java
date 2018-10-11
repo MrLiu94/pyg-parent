@@ -34,7 +34,7 @@ public class BrandController {
 
 //    数据的更新和增加
     @RequestMapping("/save")
-    public Results add(@RequestBody TbBrand brand){
+    public Results save(@RequestBody TbBrand brand){
             if (brand.getId()!=null){
                 boolean flag=brandService.update(brand);
                 if (flag){

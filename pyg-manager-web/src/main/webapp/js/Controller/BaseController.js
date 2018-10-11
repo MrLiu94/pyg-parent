@@ -11,12 +11,24 @@ app.controller('baseController', function ($scope) {
         }
     };
 
+
+    //选中集合
+    $scope.selectList = [];
+    //    选中id添加到集合方法
+    $scope.selectCheck=function ($event,id) {
+        if ($event.target.checked){
+            $scope.selectList.push(id);//push向集合添加元素
+        }else {
+            var index= $scope.selectList.indexOf(id);//查找值的位置
+            $scope.selectList.splice(index,1);//参数1：移除的位置 参数2：移除的个数
+        }
+    }
+
     //刷新列表
     $scope.reloadList = function () {
         $scope.findPage($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
     };
-    //选中集合
-    $scope.selectList = [];
+
 //    提交的查询元素
     $scope.searchEntity = {};
 

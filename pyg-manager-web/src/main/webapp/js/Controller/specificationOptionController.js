@@ -1,10 +1,11 @@
-//前端控制器
-app.controller('brandController', function ($scope,brandService,$controller) {
-    //继承BaseController
-    $controller('baseController',{$scope:$scope});
+ //控制层 
+app.controller('specificationOptionController' ,function($scope,$controller   ,specificationOptionService){	
+	
+	$controller('baseController',{$scope:$scope});//继承
 
-    $scope.findAll = function () {
-        brandService.findAll().success(
+
+	$scope.findAll = function () {
+        specificationOptionService.findAll().success(
             function (response) {
                 $scope.list = response;
             }
@@ -12,7 +13,7 @@ app.controller('brandController', function ($scope,brandService,$controller) {
     };
     //    新增数据
     $scope.save=function () {
-        brandService.save($scope.entity).success(
+        specificationOptionService.save($scope.entity).success(
             function (response) {
                 if (response.success){
                     $scope.reloadList();//刷新
@@ -23,7 +24,7 @@ app.controller('brandController', function ($scope,brandService,$controller) {
         )
     };
     $scope.findOne=function (id) {
-        brandService.findOne(id).success(
+        specificationOptionService.findOne(id).success(
             function (response) {
                 $scope.entity=response;
             }
@@ -33,7 +34,7 @@ app.controller('brandController', function ($scope,brandService,$controller) {
     //删除
     $scope.dele=function(){
         if(confirm('确定要删除吗？')){
-            brandService.dele($scope.selectList).success(
+            specificationOptionService.dele($scope.selectList).success(
                 function(response){
                     if(response.success){
                         $scope.reloadList();//刷新
@@ -47,11 +48,13 @@ app.controller('brandController', function ($scope,brandService,$controller) {
     }
     //查询&搜索
     $scope.findPage=function (page,size) {
-        brandService.findPage(page,size,$scope.searchEntity).success(
+        specificationOptionService.findPage(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list=response.rows;
                 $scope.paginationConf.totalItems=response.page;
             }
         )
     }
-});
+
+
+});	

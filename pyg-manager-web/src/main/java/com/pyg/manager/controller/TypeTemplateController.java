@@ -1,6 +1,7 @@
 package com.pyg.manager.controller;
 import java.util.List;
 
+import com.pyg.sellergoods.service.BrandService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class TypeTemplateController {
 
 	@Reference
 	private TypeTemplateService typeTemplateService;
+
 	
 	/**
 	 * 返回全部列表
@@ -47,7 +49,7 @@ public class TypeTemplateController {
 	 */
 	@RequestMapping("/save")
 	public Results save(@RequestBody TbTypeTemplate typeTemplate){
-		if (typeTemplate.getId()!=null){
+		if (typeTemplate.getId()==null){
 			try {
 				typeTemplateService.add(typeTemplate);
 				return new Results(true, "增加成功");
@@ -105,5 +107,7 @@ public class TypeTemplateController {
 	public PageResult search(@RequestBody TbTypeTemplate typeTemplate, int page, int size  ){
 		return typeTemplateService.findPage(typeTemplate, page, size);
 	}
+
+
 	
 }

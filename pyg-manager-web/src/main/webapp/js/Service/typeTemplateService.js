@@ -1,5 +1,5 @@
 //服务层
-app.service('typeTemplateService',function($http){
+app.service('typeTemplateService', function ($http) {
 
     //读取列表数据绑定到表单中
     this.findAll = function () {
@@ -25,4 +25,6 @@ app.service('typeTemplateService',function($http){
     this.findPage = function (page, size, searchEntity) {
         return $http.post('../typeTemplate/search?page=' + page + '&size=' + size, searchEntity);
     }
+
+
 });

@@ -1,6 +1,9 @@
 package com.pyg.manager.controller;
 import java.util.List;
+import java.util.Map;
 
+import com.pyg.pojo.TbSpecificationOption;
+import com.pyg.pojogroup.Specification;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,8 +49,9 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/save")
-	public Results save(@RequestBody TbSpecification specification){
-		if (specification.getId()!=null){
+	public Results save(@RequestBody Specification specification){
+
+		if (specification.getSpecification().getId()==null){
 			try {
 				specificationService.add(specification);
 				return new Results(true, "增加成功");
@@ -74,7 +78,7 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbSpecification findOne(Long id){
+	public Specification findOne(Long id){
 		return specificationService.findOne(id);		
 	}
 	
@@ -104,6 +108,11 @@ public class SpecificationController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbSpecification specification, int page, int size){
 		return specificationService.findPage(specification, page, size);
+	}
+
+	@RequestMapping("/selectOptionList")
+	public List<Map> selectOptionList(){
+		return specificationService.selectOptionList();
 	}
 	
 }

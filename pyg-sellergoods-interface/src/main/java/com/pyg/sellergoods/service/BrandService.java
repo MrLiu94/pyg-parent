@@ -4,6 +4,7 @@ import PageBean.PageResult;
 import com.pyg.pojo.TbBrand;
 
 import java.util.List;
+import java.util.Map;
 
 //品牌接口
 public interface BrandService {
@@ -20,4 +21,6 @@ public interface BrandService {
     void delete(long[] ids);
 
     PageResult search(TbBrand brand, int page, int size);
+
+    List<Map> selectOptionList();
 }

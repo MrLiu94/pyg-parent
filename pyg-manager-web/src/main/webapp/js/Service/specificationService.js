@@ -24,5 +24,11 @@ app.service('specificationService',function($http){
     //分页 查询
     this.findPage = function (page, size, searchEntity) {
         return $http.post('../specification/search?page=' + page + '&size=' + size, searchEntity);
-    }  	
+    }
+
+    //规格数据
+    this.selectOptionList=function () {
+        return $http.get('../specification/selectOptionList');
+
+    }
 });

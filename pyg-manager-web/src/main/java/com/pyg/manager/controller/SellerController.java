@@ -1,14 +1,17 @@
 package com.pyg.manager.controller;
-import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import PageBean.PageResult;
+import ReturnResult.Results;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.pyg.pojo.TbSeller;
 import com.pyg.sellergoods.service.SellerService;
-import ReturnResult.Results;
-import PageBean.PageResult;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 /**
  * controller
  * @author Administrator
@@ -47,23 +50,17 @@ public class SellerController {
 	 */
 	@RequestMapping("/save")
 	public Results add(@RequestBody TbSeller seller){
+
 		if (seller.getSellerId()!=null){
 			try {
 				sellerService.add(seller);
 				return new Results(true, "增加成功");
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new Results(false, "增加失败");
-			}
-		}else {
-			try {
-				sellerService.update(seller);
-				return new Results(true, "修改成功");
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new Results(false, "修改失败");
+				return new Results(false, "申请失败");
 			}
 		}
+		return new Results(false,"登陆名不能为空,申请失败");
 	}
 
 	
@@ -103,6 +100,19 @@ public class SellerController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbSeller seller, int page, int size  ){
 		return sellerService.findPage(seller, page, size);
+	}
+
+	@RequestMapping("/updateStatus")
+	public Results updateStatus(String sellerId,String status){
+		System.out.println(sellerId+" "+status);
+		try {
+			sellerService.updateStatus(sellerId,status);
+
+			return new Results(true,"更新成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Results(false,"更新失败");
+		}
 	}
 	
 }

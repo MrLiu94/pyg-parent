@@ -29,8 +29,6 @@ app.controller('baseController', function ($scope) {
         $scope.findPage($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
     };
 
-//    提交的查询元素
-    $scope.searchEntity = {};
 
 //  json转换成string 友好显示
     $scope.jsonToString=function (jsonString,key) {

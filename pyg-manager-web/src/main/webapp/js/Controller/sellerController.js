@@ -45,12 +45,27 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
         }
 
     }
+    //    提交的查询元素
+    $scope.searchEntity = {};
     //查询&搜索
     $scope.findPage=function (page,size) {
         sellerService.findPage(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list=response.rows;
                 $scope.paginationConf.totalItems=response.page;
+            }
+        )
+    }
+//    更新状态
+    $scope.updateStatus=function (sellerId,status) {
+        sellerService.updateStatus(sellerId,status).success(
+            function (response) {
+                if (response.success){
+                    $scope.reloadList();//刷新列表
+                }else {
+                    alert(response.message);
+                }
+
             }
         )
     }

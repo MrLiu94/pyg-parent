@@ -28,7 +28,7 @@
 
 </head>
 <!--ng-app="pyg" ng-controller="specificationController"-->
-<body class="hold-transition skin-red sidebar-mini" ng-app="pyg" ng-controller="specificationController">
+<body class="hold-transition skin-red sidebar-mini" ng-app="pyg" ng-controller="specificationController" ng-init="searchEntity={}">
 <!-- .box-body -->
 <div class="box-header with-border">
     <h3 class="box-title">规格管理</h3>
@@ -54,7 +54,7 @@
         </div>
         <div class="box-tools pull-right">
             <div class="has-feedback">
-                规格名称：<input>
+                规格名称：<input type="text" ng-model="searchEntity.name">{{searchEntity.name}}
                 <button class="btn btn-default">查询</button>
             </div>
         </div>

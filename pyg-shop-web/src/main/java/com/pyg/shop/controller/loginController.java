@@ -10,7 +10,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/login")
 public class loginController {
-
+    /**
+     *
+     * @return
+     */
     @RequestMapping("/findName")
     public Map findName(){
         String name = SecurityContextHolder.getContext().getAuthentication().getName();

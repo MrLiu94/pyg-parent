@@ -47,7 +47,16 @@ app.controller('brandController', function ($scope,brandService,$controller) {
     }
     //查询&搜索
     $scope.findPage=function (page,size) {
-        brandService.findPage(page,size,$scope.searchEntity).success(
+        brandService.findPage(page,size).success(
+            function (response) {
+                $scope.list=response.rows;
+                $scope.paginationConf.totalItems=response.page;
+            }
+        )
+    }
+    //查询&搜索
+    $scope.search=function (page,size) {
+        brandService.searchPage(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list=response.rows;
                 $scope.paginationConf.totalItems=response.page;

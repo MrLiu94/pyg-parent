@@ -65,4 +65,14 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
     $scope.deleTableRow=function(index){
         $scope.entity.specificationOptionList.splice(index,1);
     }
+
+    //查询&搜索
+    $scope.search=function (page,size) {
+        specificationService.findPage(page,size,$scope.searchEntity).success(
+            function (response) {
+                $scope.list=response.rows;
+                $scope.paginationConf.totalItems=response.page;
+            }
+        )
+    }
 });	

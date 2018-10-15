@@ -12,11 +12,14 @@ app.service('brandService', function ($http) {
     this.dele = function (ids) {
         return $http.get('../brand/delete?ids=' + ids);
     }
-    this.findPage = function (page, size, searchEntity) {
-        return $http.post('../brand/search?page=' + page + '&size=' + size, searchEntity);
+    this.findPage = function (page, size) {
+        return $http.get('../brand/findPage?page=' + page + '&size=' + size);
     }
     //品牌数据查询
     this.selectOptionList=function () {
         return $http.get('../brand/selectOption');
+    }
+    this.searchPage = function (page, size, searchEntity) {
+        return $http.post('../brand/search?page=' + page + '&size=' + size, searchEntity);
     }
 });

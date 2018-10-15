@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,16 @@ public class BrandController {
 
         return brandService.findAll();
     }
+
+    /**
+     * 返回全部列表
+     * @return
+     */
+    @RequestMapping("/findPage")
+    public PageResult  findPage(int page,int size){
+        return brandService.findPage(page, size);
+    }
+
 
 
     @RequestMapping("/findOne")
@@ -66,6 +77,7 @@ public class BrandController {
 //    模糊查询搜索
     @RequestMapping("/search")
     public PageResult search(@RequestBody TbBrand brand,int page,int size){
+        System.out.println(brand);
         return brandService.search(brand,page,size);
     }
 

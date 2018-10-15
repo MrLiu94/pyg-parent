@@ -92,6 +92,7 @@ public class BrandServiceImpl implements BrandService {
             }
         }
         Page<TbBrand> tbBrands = (Page<TbBrand>) brandMapper.selectByExample(example);
+        System.out.println(tbBrands.getResult());
         return new PageResult(tbBrands.getTotal(), tbBrands.getResult());
     }
 

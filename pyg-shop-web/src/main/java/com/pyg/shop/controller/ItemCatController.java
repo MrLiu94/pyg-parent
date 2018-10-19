@@ -1,4 +1,4 @@
-package com.pyg.manager.controller;
+package com.pyg.shop.controller;
 
 import PageBean.PageResult;
 import ReturnResult.Results;
@@ -24,26 +24,26 @@ public class ItemCatController {
 
 	@Reference
 	private ItemCatService itemCatService;
-
+	
 	/**
 	 * 返回全部列表
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public List<TbItemCat> findAll(){
+	public List<TbItemCat> findAll(){			
 		return itemCatService.findAll();
 	}
-
-
+	
+	
 	/**
 	 * 返回全部列表
 	 * @return
 	 */
 	@RequestMapping("/findPage")
-	public PageResult  findPage(int page,int rows){
+	public PageResult  findPage(int page,int rows){			
 		return itemCatService.findPage(page, rows);
 	}
-
+	
 	/**
 	 * 增加
 	 * @param itemCat
@@ -70,7 +70,7 @@ public class ItemCatController {
 		}
 	}
 
-
+	
 	/**
 	 * 获取实体
 	 * @param id
@@ -78,9 +78,9 @@ public class ItemCatController {
 	 */
 	@RequestMapping("/findOne")
 	public TbItemCat findOne(Long id){
-		return itemCatService.findOne(id);
+		return itemCatService.findOne(id);		
 	}
-
+	
 	/**
 	 * 批量删除
 	 * @param ids
@@ -96,8 +96,8 @@ public class ItemCatController {
 			return new Results(false, "删除失败");
 		}
 	}
-
-	/**
+	
+		/**
 	 * 查询+分页
 	 * @param itemCat
 	 * @param page

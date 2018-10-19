@@ -11,12 +11,14 @@ import com.pyg.pojo.TbSpecificationOptionExample.Criteria;
 import com.pyg.sellergoods.service.SpecificationOptionService;
 
 import PageBean.PageResult;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
  * @author Administrator
  *
  */
+@Transactional
 @Service
 public class SpecificationOptionServiceImpl implements SpecificationOptionService {
 

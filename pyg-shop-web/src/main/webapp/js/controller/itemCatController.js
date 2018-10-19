@@ -1,10 +1,10 @@
  //控制层 
-app.controller('specificationController' ,function($scope,$controller   ,specificationService){	
+app.controller('itemCatController' ,function($scope,$controller   ,itemCatService){	
 	
 	$controller('baseController',{$scope:$scope});//继承
 
     $scope.findAll = function () {
-        specificationService.findAll().success(
+        itemCatService.findAll().success(
             function (response) {
                 $scope.list = response;
             }
@@ -12,7 +12,7 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
     };
     //    新增数据
     $scope.save=function () {
-        specificationService.save($scope.entity).success(
+        itemCatService.save($scope.entity).success(
             function (response) {
                 if (response.success){
                     $scope.reloadList();//刷新
@@ -23,7 +23,7 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
         )
     };
     $scope.findOne=function (id) {
-        specificationService.findOne(id).success(
+        itemCatService.findOne(id).success(
             function (response) {
                 $scope.entity=response;
             }
@@ -33,7 +33,7 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
     //删除
     $scope.dele=function(){
         if(confirm('确定要删除吗？')){
-            specificationService.dele($scope.selectList).success(
+            itemCatService.dele($scope.selectList).success(
                 function(response){
                     if(response.success){
                         $scope.reloadList();//刷新
@@ -47,32 +47,21 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
     }
     //查询&搜索
     $scope.findPage=function (page,size) {
-        specificationService.findPage(page,size,$scope.searchEntity).success(
+        itemCatService.findPage(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list=response.rows;
                 $scope.paginationConf.totalItems=response.page;
             }
         )
     }
+    $scope.findByParentId=function (parentId) {
+        itemCatService.findParentId(parentId).success(
+            function (response) {
+                $scope.list=response;
+            }
+        )
 
-    // $scope.entity={specificationOptionList:[]};
 
-    //增加规格选项行
-    $scope.addTableRow = function () {
-        $scope.entity.specificationOptionList.push({});
     }
-    //删除规格选项行
-    $scope.deleTableRow=function(index){
-        $scope.entity.specificationOptionList.splice(index,1);
-    }
-    //
-    // //查询&搜索
-    // $scope.search=function (page,size) {
-    //     specificationService.findPage(page,size,$scope.searchEntity).success(
-    //         function (response) {
-    //             $scope.list=response.rows;
-    //             $scope.paginationConf.totalItems=response.page;
-    //         }
-    //     )
-    // }
+    
 });	

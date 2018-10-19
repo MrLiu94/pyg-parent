@@ -11,12 +11,14 @@ import com.pyg.pojo.TbGoodsDescExample.Criteria;
 import com.pyg.sellergoods.service.GoodsDescService;
 
 import PageBean.PageResult;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
  * @author Administrator
  *
  */
+@Transactional
 @Service
 public class GoodsDescServiceImpl implements GoodsDescService {
 

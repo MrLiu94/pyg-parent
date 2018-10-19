@@ -1,17 +1,18 @@
-package com.pyg.manager.controller;
-import java.util.List;
-import java.util.Map;
+package com.pyg.shop.controller;
 
-import com.pyg.sellergoods.service.BrandService;
+import PageBean.PageResult;
+import ReturnResult.Results;
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.pyg.pojo.TbTypeTemplate;
+import com.pyg.sellergoods.service.TypeTemplateService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.pyg.pojo.TbTypeTemplate;
-import com.pyg.sellergoods.service.TypeTemplateService;
-import ReturnResult.Results;
-import PageBean.PageResult;
+
+import java.util.List;
+import java.util.Map;
+
 /**
  * controller
  * @author Administrator

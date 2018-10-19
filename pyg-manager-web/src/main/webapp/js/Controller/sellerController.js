@@ -48,7 +48,7 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
     //    提交的查询元素
     $scope.searchEntity = {};
     //查询&搜索
-    $scope.search=function (page,size) {
+    $scope.findPage=function (page,size) {
         sellerService.findPage(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list=response.rows;
@@ -69,5 +69,6 @@ app.controller('sellerController' ,function($scope,$controller   ,sellerService)
             }
         )
     }
+    $scope.status=['待审核','已审核','审核未通过','关闭'];
     
 });	

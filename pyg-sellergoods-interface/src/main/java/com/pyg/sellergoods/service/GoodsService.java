@@ -5,6 +5,7 @@ import java.util.List;
 import com.pyg.pojo.TbGoods;
 
 import PageBean.PageResult;
+import com.pyg.pojogroup.Goods;
 
 /**
  * 服务层接口
@@ -21,12 +22,11 @@ public interface GoodsService {
     public List<TbGoods> findAll();
 
 
-
     //更新数据
-    boolean update(TbGoods goods);
+    void update(Goods goods);
 
     //    新增数据
-    boolean add(TbGoods goods);
+    void add(Goods goods);
 
 
     /**
@@ -35,7 +35,7 @@ public interface GoodsService {
      * @param id
      * @return
      */
-    public TbGoods findOne(Long id);
+    public Goods findOne(Long id);
 
 
     /**
@@ -53,5 +53,8 @@ public interface GoodsService {
      * @return
      */
     PageResult search(TbGoods goods, int pageNum, int pageSize);
+
+    //审核状态更新
+    public void updateStatus(Long[] ids, String status);
 
 }

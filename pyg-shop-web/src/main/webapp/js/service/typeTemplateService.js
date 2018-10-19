@@ -32,5 +32,4 @@ app.service('typeTemplateService', function ($http) {
     }
 
 
-
 });

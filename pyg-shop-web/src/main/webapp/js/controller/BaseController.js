@@ -32,6 +32,7 @@ app.controller('baseController', function ($scope) {
 //    提交的查询元素
     $scope.searchEntity = {};
 
+
 //  json转换成string 友好显示
     $scope.jsonToString=function (jsonString,key) {
         var json=JSON.parse(jsonString);//将json字符串转换成json对象
@@ -43,6 +44,18 @@ app.controller('baseController', function ($scope) {
             value+=json[i][key];
         }
         return value;
+    }
+
+    //在list中根据某key查询对象
+    $scope.searchObjectByKey= function (list,key,keyValue) {
+        for (var i=0;i<list.length;i++){
+            if ( list[i][key]==keyValue){
+                return list[i];
+            }
+        }
+        return null;
+
+
     }
 
 });

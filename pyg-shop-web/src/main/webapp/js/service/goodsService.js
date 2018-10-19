@@ -6,8 +6,12 @@ app.service('goodsService', function ($http) {
         return $http.get('../goods/findAll');
     }
     //存储&修改
-    this.save = function (entity) {
+    this.add = function (entity) {
         return $http.post('../goods/save', entity);
+    }
+    //更新数据
+    this.update = function (entity) {
+        return $http.post('../goods/update', entity);
     }
 
     //查询实体

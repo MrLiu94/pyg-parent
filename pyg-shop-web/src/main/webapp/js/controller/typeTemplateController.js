@@ -50,7 +50,7 @@ app.controller('typeTemplateController' ,function($scope,$controller,typeTemplat
 
     }
     //查询&搜索
-    $scope.findPage=function (page,size) {
+    $scope.search=function (page,size) {
         typeTemplateService.findPage(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list=response.rows;

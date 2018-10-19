@@ -1,4 +1,4 @@
-package com.pyg.shop.controller;
+package com.pyg.manager.controller;
 
 import PageBean.PageResult;
 import ReturnResult.Results;
@@ -115,10 +115,18 @@ public class GoodsController {
      */
     @RequestMapping("/search")
     public PageResult search(@RequestBody TbGoods goods, int page, int size) {
-        //查询是否为该商家的商品
-        String sellerID = SecurityContextHolder.getContext().getAuthentication().getName();
-        goods.setSellerId(sellerID);
         return goodsService.search(goods, page, size);
+    }
+
+    @RequestMapping("/updateStatus")
+    public Results updateStatus(Long ids[],String status){
+        try {
+            goodsService.updateStatus(ids,status);
+            return new Results(true,"操作成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Results(false,"操作失败");
+        }
     }
 
 }

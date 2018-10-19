@@ -24,13 +24,17 @@
     <!--引入angular-->
     <script src="../plugins/angularjs/angular.min.js"></script>
     <script src="../js/base.js"></script>
-    <script src="../js/service/goodsService.js"></script>
-    <script src="../js/service/itemCatService.js"></script>
-    <script src="../js/service/typeTemplateService.js"></script>
-    <script src="../js/service/uploadService.js"></script>
-    <script src="../js/controller/BaseController.js"></script>
-    <script src="../js/controller/goodsController.js"></script>
-
+    <script src="../js/Service/goodsService.js"></script>
+    <script src="../js/Service/itemCatService.js"></script>
+    <script src="../js/Service/typeTemplateService.js"></script>
+    <!--<script src="../js/Service/uploadService.js"></script>-->
+    <script src="../js/Controller/BaseController.js"></script>
+    <script src="../js/Controller/goodsController.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("input").attr("disabled", true);
+        });
+    </script>
 
 </head>
 
@@ -214,7 +218,7 @@
                             <div ng-repeat="pojo in specList">
                                 <div class="col-md-2 title">{{pojo.text}}</div>
                                 <div class="col-md-10 data">
-
+					                               
 					                            <span ng-repeat="option in pojo.options">
 					                            	<input type="checkbox"
                                                            ng-click="updateSpecAttribute($event,pojo.text,option.optionName);createItemList();"
@@ -279,7 +283,7 @@
 
     </div>
     <div class="btn-toolbar list-toolbar">
-        <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>
+        <!--<button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>-->
         <a href="goods.html" class="btn btn-default">返回列表</a>
     </div>
 

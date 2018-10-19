@@ -1,7 +1,7 @@
- //控制层 
-app.controller('itemCatController' ,function($scope,$controller   ,itemCatService){	
-	
-	$controller('baseController',{$scope:$scope});//继承
+//控制层
+app.controller('itemCatController' ,function($scope,$controller   ,itemCatService){
+
+    $controller('baseController',{$scope:$scope});//继承
 
     $scope.findAll = function () {
         itemCatService.findAll().success(
@@ -54,5 +54,38 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
             }
         )
     }
+    $scope.findByParentId=function (parentId) {
+        itemCatService.findParentId(parentId).success(
+            function (response) {
+                $scope.list=response;
+            }
+        )
+
+
+    }
+    //设置默认等级为1
+    $scope.grade=1;
+
+    //设置级别
+    $scope.setGrade=function (value) {
+
+        $scope.grade=value;
+    }
+    //    读取列表
+    $scope.selectList=function (p_entity) {
+        if($scope.grade==1){
+            $scope.entity_1=null;
+            $scope.entity_2=null;
+        }
+        if($scope.grade==2){
+            $scope.entity_1=p_entity;
+            $scope.entity_2=null;
+        }
+        if ($scope.grade==3){
+            $scope.entity_2=p_entity;
+        }
+        $scope.findByParentId(p_entity.id);//查询此级下级列表
+    }
     
+
 });	

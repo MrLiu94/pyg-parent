@@ -11,12 +11,14 @@ import com.pyg.pojo.TbSellerExample;
 import com.pyg.pojo.TbSellerExample.Criteria;
 import com.pyg.sellergoods.service.SellerService;
 import PageBean.PageResult;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
  * @author Administrator
  *
  */
+@Transactional
 @Service
 public class SellerServiceImpl implements SellerService {
 

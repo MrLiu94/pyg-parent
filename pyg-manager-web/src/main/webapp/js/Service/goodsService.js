@@ -25,5 +25,11 @@ app.service('goodsService', function ($http) {
     this.findPage = function (page, size, searchEntity) {
         return $http.post('../goods/search?page=' + page + '&size=' + size, searchEntity);
     }
+
+    //更新状态
+    this.updateStatus=function (ids,status) {
+        return $http.get('../goods/updateStatus?ids='+ids+"&status="+status);
+
+    }
 });
 

@@ -16,6 +16,9 @@
         <module>com-sellergoods-service</module>
         <module>pyg-shop-web</module>
         <module>pyg-manager-web</module>
+        <module>pyg-content-interface</module>
+        <module>pyg-content-service</module>
+        <module>pyg-portal-web</module>
     </modules>
     <dependencies>
         <dependency>

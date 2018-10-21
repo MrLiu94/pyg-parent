@@ -5,6 +5,7 @@
       <configuration>
         <fileset id="fileset" name="Springmvc" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/springmvc.xml</file>
+          <file>file://$MODULE_DIR$/../pyg-common/src/main/resources/spring/applicationContext-redis.xml</file>
         </fileset>
       </configuration>
     </facet>

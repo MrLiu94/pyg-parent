@@ -22,6 +22,19 @@
 		<level name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" value="project"/>
 		<level name="Maven: mysql:mysql-connector-java:5.1.32" value="project"/>
 		<level name="Maven: com.alibaba:druid:1.0.9" value="project"/>
+		<level name="Maven: org.springframework.data:spring-data-solr:1.5.5.RELEASE" value="project"/>
+		<level name="Maven: org.apache.commons:commons-lang3:3.1" value="project"/>
+		<level name="Maven: commons-collections:commons-collections:3.2.1" value="project"/>
+		<level name="Maven: org.apache.httpcomponents:httpclient:4.5.3" value="project"/>
+		<level name="Maven: org.apache.httpcomponents:httpmime:4.2.2" value="project"/>
+		<level name="Maven: org.apache.httpcomponents:httpclient-cache:4.2.2" value="project"/>
+		<level name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.7" value="project"/>
+		<level name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" value="project"/>
+		<level name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.7" value="project"/>
+		<level name="Maven: org.apache.solr:solr-solrj:4.10.3" value="project"/>
+		<level name="Maven: org.apache.httpcomponents:httpcore:4.4.4" value="project"/>
+		<level name="Maven: org.codehaus.woodstox:wstx-asl:3.2.7" value="project"/>
+		<level name="Maven: org.noggit:noggit:0.5" value="project"/>
 		<level name="Maven: org.springframework:spring-context:4.2.4.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-beans:4.2.4.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-webmvc:4.2.4.RELEASE" value="project"/>
@@ -47,6 +60,10 @@
 		<level name="Maven: javassist:javassist:3.11.0.GA" value="project"/>
 		<level name="Maven: commons-codec:commons-codec:1.10" value="project"/>
 		<level name="Maven: javax.servlet:servlet-api:2.5" value="project"/>
+		<level name="Maven: org.apache.activemq:activemq-client:5.13.4" value="project"/>
+		<level name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" value="project"/>
+		<level name="Maven: org.fusesource.hawtbuf:hawtbuf:1.11" value="project"/>
+		<level name="Maven: org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1" value="project"/>
 		<level name="Maven: org.csource.fastdfs:fastdfs:1.2" value="project"/>
 		<level name="Maven: commons-fileupload:commons-fileupload:1.3.1" value="project"/>
 		<level name="Maven: commons-io:commons-io:2.2" value="project"/>

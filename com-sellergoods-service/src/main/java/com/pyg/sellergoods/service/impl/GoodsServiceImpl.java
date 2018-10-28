@@ -1,22 +1,22 @@
 package com.pyg.sellergoods.service.impl;
 
+import PageBean.PageResult;
+import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.pyg.mapper.*;
+import com.pyg.pojo.*;
+import com.pyg.pojo.TbGoodsExample.Criteria;
+import com.pyg.pojogroup.Goods;
+import com.pyg.sellergoods.service.GoodsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import com.alibaba.fastjson.JSON;
-import com.pyg.mapper.*;
-import com.pyg.pojo.*;
-import com.pyg.pojogroup.Goods;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.alibaba.dubbo.config.annotation.Service;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.pyg.pojo.TbGoodsExample.Criteria;
-import com.pyg.sellergoods.service.GoodsService;
-
-import PageBean.PageResult;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
@@ -222,6 +222,16 @@ public class GoodsServiceImpl implements GoodsService {
             tbGoods.setAuditStatus(status);
             goodsMapper.updateByPrimaryKey(tbGoods);
         }
+    }
+
+    @Override
+    public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status) {
+        TbItemExample example=new TbItemExample();
+        TbItemExample.Criteria criteria = example.createCriteria();
+        criteria.andGoodsIdIn(Arrays.asList(goodsIds));
+        criteria.andStatusEqualTo(status);
+        List<TbItem> tbItems = itemMapper.selectByExample(example);
+        return tbItems;
     }
 
 

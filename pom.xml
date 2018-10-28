@@ -19,6 +19,13 @@
         <module>pyg-content-interface</module>
         <module>pyg-content-service</module>
         <module>pyg-portal-web</module>
+        <module>pyg-solr-utils</module>
+        <module>pyg-search-interface</module>
+        <module>pyg-search-service</module>
+        <module>pyg-search-web</module>
+        <module>pyg-page-interface</module>
+        <module>pyg-page-service</module>
+        <module>pyg-page-web</module>
     </modules>
     <dependencies>
         <dependency>
